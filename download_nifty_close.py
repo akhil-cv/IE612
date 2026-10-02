@@ -173,7 +173,7 @@ def main():
         end_date="2026-12-31"
     )
 
-    nse.save(nifty, "nifty_close.csv")
+    nse.save(nifty, "data/nifty_close.csv")
 
     print(nifty)
     print("\nShape:", nifty.shape)

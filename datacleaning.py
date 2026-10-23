@@ -42,7 +42,8 @@ def data_day(date, niftyoptions_df, niftyspot_df):
     df_temp['r'] = np.median(r_temp)
     r = np.median(r_temp)
     #out-of-the-money calls and puts
-    subset_df = df_temp[((df_temp['option_type'] == 'CE') & (df_temp['moneyness'] >= 1)) | ((df_temp['option_type'] == 'PE') & (df_temp['moneyness'] < 1))]
+    # subset_df = df_temp[((df_temp['option_type'] == 'CE') & (df_temp['moneyness'] >= 1)) | ((df_temp['option_type'] == 'PE') & (df_temp['moneyness'] < 1))]
+    subset_df = df_temp[((df_temp['option_type'] == 'CE')) | ((df_temp['option_type'] == 'PE') )]
     return subset_df, r
 
 

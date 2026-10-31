@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nifty-sensi"
+version = "1.0.0"
+description = "NIFTY 50 option implied volatility and Greeks analytics"
+readme = "docs/USAGE.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "IE612" }]
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "scipy>=1.10",
+    "pyarrow>=12",
+    "matplotlib>=3.7",
+]
+
+[project.optional-dependencies]
+ingest = ["requests>=2.28", "huggingface_hub>=0.20", "duckdb>=0.9"]
+notebook = ["ipywidgets>=8", "jupyterlab>=4"]
+dev = ["pytest>=7", "ruff>=0.4", "nbformat>=5", "nbclient>=0.8"]
+
+[project.scripts]
+nifty-sensi = "nifty_sensi.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["E501"]

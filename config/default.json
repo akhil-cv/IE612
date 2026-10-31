@@ -1,0 +1,78 @@
+{
+  "data": {
+    "raw_dir": "data/raw",
+    "interim_dir": "data/interim",
+    "processed_dir": "data/processed",
+    "artifacts_dir": "artifacts",
+    "spot_file": "data/nifty_close.csv",
+    "options_file": "data/niftyoptions_df.csv",
+    "start": null,
+    "end": null
+  },
+  "options": {
+    "price_column": "close",
+    "otm_only": false,
+    "min_price": 0.05,
+    "min_days": 1,
+    "max_days": 365,
+    "day_count": 365.0,
+    "dedupe": true
+  },
+  "iv": {
+    "lower": 0.0001,
+    "upper": 5.0,
+    "tolerance": 1e-08,
+    "max_iter": 60
+  },
+  "rate": {
+    "min": -0.05,
+    "max": 0.3,
+    "fallback": 0.065,
+    "rolling_window": 5
+  },
+  "grid": {
+    "moneyness": [
+      0.6,
+      0.6888888888888889,
+      0.7777777777777778,
+      0.8666666666666667,
+      0.9555555555555556,
+      1.0444444444444445,
+      1.1333333333333333,
+      1.2222222222222223,
+      1.3111111111111111,
+      1.4
+    ],
+    "tau_days": [
+      7,
+      14,
+      30,
+      60,
+      90,
+      180,
+      270,
+      365
+    ],
+    "min_points": 4
+  },
+  "greeks": {
+    "theta_per_day": true,
+    "vega_per_point": true,
+    "rho_per_point": true
+  },
+  "synthetic": {
+    "spot_pad": 6000,
+    "strike_step": 300,
+    "strike_round": 50,
+    "rate_offsets": [
+      -0.01,
+      0.0,
+      0.01
+    ]
+  },
+  "report": {
+    "title": "NIFTY 50 Option Sensitivity Report",
+    "dpi": 110,
+    "max_dates": 4
+  }
+}
